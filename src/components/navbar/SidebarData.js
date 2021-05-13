@@ -27,4 +27,16 @@ export const SidebarData = [
     icon: <RiIcons.RiBillLine />,
     cName: "nav-text",
   },
+  {
+    title: "Login",
+    path: "/login",
+    icon: <RiIcons.RiBillLine />,
+    cName: "nav-text",
+  },
+  {
+    title: "SignUp",
+    path: "/signup",
+    icon: <RiIcons.RiBillLine />,
+    cName: "nav-text",
+  },
 ];
