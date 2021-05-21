@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+//import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 export default function Signup() {
   return (
@@ -88,7 +88,6 @@ export default function Signup() {
             <button
               class="btn mt-3 mb-10"
               style={{
-                backgroundColor: "#EAE7E2",
                 width: "200px",
                 height: "50px",
                 backgroundColor: "#C7E5F0",
