@@ -1,5 +1,5 @@
 // import React from "react";
-import React, { useState } from "react";
+//import React, { useState } from "react";
 import "./styles/App.css";
 import { BrowserRouter as Routers, Switch, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
@@ -9,6 +9,7 @@ import Room from "./pages/Room";
 import Invoice from "./pages/Invoice";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/register/Signup";
+import Utility from "./pages/Utility";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/dormsetting" component={DormSetting} />
         <Route path="/room" component={Room} />
         <Route path="/invoice" component={Invoice} />
+        <Route path="/utility" component={Utility} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
       </Switch>
