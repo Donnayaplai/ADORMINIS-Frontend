@@ -1,6 +1,7 @@
 import React from "react";
 import * as BiIcons from "react-icons/bi";
 import * as RiIcons from "react-icons/ri";
+import * as AiIcons from "react-icons/ai";
 
 export const SidebarData = [
   {
@@ -30,7 +31,7 @@ export const SidebarData = [
   {
     title: "Utility",
     path: "/utility",
-    icon: <RiIcons.RiBillLine />,
+    icon: <AiIcons.AiOutlineCalculator />,
     cName: "nav-text",
   },
   {
