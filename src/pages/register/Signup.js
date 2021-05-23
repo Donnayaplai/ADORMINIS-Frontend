@@ -1,9 +1,120 @@
-//import React, { Component } from "react";
+import React, { useState } from "react";
+import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-export default function Signup() {
+import "./Signup.css";
+function Signup() {
+  const [emailReg, setEmailReg] = useState("");
+  const [passwordReg, setPasswordReg] = useState("");
+  const [fnameReg, setFnameReg] = useState("");
+  const [lnameReg, setLnameReg] = useState("");
+
+  const signup = () => {
+    Axios.post("http://localhost:3001/signup", {
+      email: emailReg,
+      password: passwordReg,
+      fname: fnameReg,
+      lname: lnameReg,
+    }).then((response) => {
+      console.log(response);
+    });
+  };
   return (
     <div>
-      <div className="signup-form">
+      <div className="container">
+        <div className="form-header">
+          <h1>Register with Adorminis</h1>
+        </div>
+        <div className="form-group">
+          <form action="">
+            <div id="form-soc">
+              <button
+                type="submit"
+                className="btn-gg"
+                style={{
+                  backgroundColor: "#CD5642",
+                  marginRight: "10px",
+                }}
+              >
+                Google
+              </button>
+              <button
+                type="submit"
+                className="btn-fb"
+                style={{
+                  backgroundColor: "#415993",
+                }}
+              >
+                Facebook
+              </button>
+            </div>
+
+            <div>
+              <input
+                type="text"
+                onChange={(e) => {
+                  setEmailReg(e.target.value);
+                }}
+                placeholder="Enter your email"
+                name="email"
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                onChange={(e) => {
+                  setPasswordReg(e.target.value);
+                }}
+                placeholder="Enter your password"
+                name="psw"
+                required
+              />
+            </div>
+            {/* 
+            <div>
+              <input
+                type="password"
+                placeholder="Repeat Password"
+                name="psw-repeat"
+                id="psw-repeat"
+                required
+              />
+            </div> */}
+
+            <div>
+              <input
+                type="text"
+                onChange={(e) => {
+                  setFnameReg(e.target.value);
+                }}
+                placeholder="Enter your name"
+                name="fname"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                onChange={(e) => {
+                  setLnameReg(e.target.value);
+                }}
+                placeholder="Enter your lastname"
+                name="lname"
+              />
+            </div>
+
+            <p>By creating an account you agree to our Terms & Privacy.</p>
+
+            <button type="submit" className="registerbtn" onClick={signup}>
+              Register
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
+export default Signup;
+
+/* <div className="signup-form">
         <div class="container mt-5 text-center">
           <div class="row">
             <div class="col-xl-9 col-md-8 mx-auto ">
@@ -11,7 +122,7 @@ export default function Signup() {
             </div>
           </div>
         </div>
-        <form method="post" action="">
+        <form>
           <div
             class="container mx-auto mt-3"
             style={{
@@ -55,7 +166,6 @@ export default function Signup() {
                   name="email"
                   type="email"
                   class="form-control"
-                  id="email"
                   placeholder=" adorminis@gmail.com"
                   required
                 />
@@ -64,13 +174,7 @@ export default function Signup() {
                 <label for="password" class="form-label">
                   Password
                 </label>
-                <input
-                  name="password"
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  required
-                />
+                <input name="password" type="password" class="form-control" />
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6">
                 <label for="email" class="form-label">
@@ -78,9 +182,8 @@ export default function Signup() {
                 </label>
                 <input
                   name="passwordConfirm"
-                  type="passwod"
+                  type="password"
                   class="form-control"
-                  id="passwordConfirm"
                   required
                 />
               </div>
@@ -99,7 +202,4 @@ export default function Signup() {
             </button>
           </div>
         </form>
-      </div>
-    </div>
-  );
-}
+      </div> */
