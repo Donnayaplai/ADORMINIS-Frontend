@@ -1,7 +1,8 @@
-// import React from "react";
-//import React, { useState } from "react";
-import "./styles/App.css";
 import { BrowserRouter as Routers, Switch, Route } from "react-router-dom";
+
+import "./styles/App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import DormSetting from "./pages/DormSetting";
@@ -10,9 +11,8 @@ import Invoice from "./pages/Invoice";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/register/Signup";
 import Utility from "./pages/Utility";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
+const App = () => {
   return (
     <Routers>
       <Navbar />
@@ -27,7 +27,7 @@ function App() {
       </Switch>
     </Routers>
   );
-}
+};
 export default App;
 //ทดสอบการเชื่อมต่อกับ backend
 // function App() {
