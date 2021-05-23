@@ -1,9 +1,96 @@
-//import React, { Component } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-export default function Login() {
+import Axios from "axios";
+
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [loginStatus, setLoginStatus] = useState("");
+
+  const login = () => {
+    Axios.post("http://localhost:3001/login", {
+      email: email,
+      password: password,
+    }).then((response) => {
+      if (response.data.message) {
+        setLoginStatus(response.data.message);
+      } else {
+        setLoginStatus(response.data[0].username);
+      }
+    });
+  };
+  // useEffect(() => {
+  //   Axios.get("http://localhost:3001/login").then((response) => {
+  //     if (response.data.loggedIn == true) {
+  //       setLoginStatus(response.data.user[0].username);
+  //     }
+  //   });
+  // }, []);
   return (
     <div>
-      <div className="login-form">
+      <div className="container">
+        <div className="form-header">
+          <h1>Login with Adorminis</h1>
+        </div>
+        <div className="form-group">
+          <form action="">
+            <div id="form-soc">
+              <button
+                type="submit"
+                className="btn-gg"
+                style={{
+                  backgroundColor: "#CD5642",
+                  marginRight: "10px",
+                }}
+              >
+                Google
+              </button>
+              <button
+                type="submit"
+                className="btn-fb"
+                style={{
+                  backgroundColor: "#415993",
+                }}
+              >
+                Facebook
+              </button>
+            </div>
+
+            <div>
+              <input
+                type="text"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                placeholder="Enter your email"
+                name="email"
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                placeholder="Enter your password"
+                name="password"
+                required
+              />
+            </div>
+
+            <button type="submit" className="registerbtn" onClick={login}>
+              Login
+            </button>
+          </form>
+        </div>
+        <h1>{loginStatus}</h1>
+      </div>
+    </div>
+  );
+}
+export default Login;
+/* <div className="login-form">
         <div class="container mt-5 text-center">
           <div class="row">
             <div class="col-xl-9 col-md-8 mx-auto ">
@@ -11,8 +98,9 @@ export default function Login() {
             </div>
           </div>
         </div>
-        <form method="post" action="">
-          <div
+        {/* <form onSubmit={handleLogin} ref={form}> */
+/* <form> */
+/* <div
             class="container mx-auto mt-3"
             style={{
               backgroundColor: "#EAE7E2",
@@ -55,11 +143,11 @@ export default function Login() {
                 </label>
                 <input
                   name="email"
-                  type="email"
+                  type="text"
                   class="form-control"
-                  id="email"
-                  placeholder=" adorminis@gmail.com"
-                  required
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6">
@@ -69,13 +157,15 @@ export default function Login() {
                 <input
                   name="password"
                   type="password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                   class="form-control"
-                  id="password"
-                  required
                 />
               </div>
             </div>
             <button
+              onClick={login}
               class="btn mt-3 mb-10"
               style={{
                 width: "200px",
@@ -89,7 +179,4 @@ export default function Login() {
             </button>
           </div>
         </form>
-      </div>
-    </div>
-  );
-}
+      </div> */
