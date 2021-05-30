@@ -1,72 +1,144 @@
-import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import React from "react";
 import axios from "axios";
-import dormallroom from "./dormallroom";
-//const axios = require('axios').default;
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function Room() {
+  let { dormID } = useParams();
+  const [room, setRoom] = useState([]);
 
-  const [room, getAllRoom] = useState([]);
+  useEffect(() => {
+    // const fetchData = async () => {
+    //     const result = await axios.get(`http://localhost:3001/room/${dormID}`)
+    //     setRoom(result.data)
+    // }
+    axios.get(`http://localhost:3001/room/${dormID}`).then((response) => {
+      setRoom(response.data);
+    });
+    // fetchData()
+  }, [dormID]);
 
-const url = 'http://localhost:3001/room';
- 
-useEffect(() => {
-  getRoomAll();
- }, []);
-
-const getRoomAll =  () => {
-    axios.get(`${url}past`).then((response) => {
-      const allroom = response.data.room.allroom;
-      getAllRoom(allroom);
-    })
- .catch(error => console.error(`ERROR: ${error}`));
-  }
-  return(
-   <dormallroom room={room}/>
-  )
-
+  console.log(room);
+  return (
+    <div className="Room mb-5">
+      <div className="container text-center">
+        <div className="row">
+          <div className="col-xl-9 col-md-8 mx-auto ">
+            <h1 className="text-dark text-center">Room</h1>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Room</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {room.map((value, key) => {
+                <tr>
+                  <td>{value.ROOMNO}</td>
+                  <td>{value.STATUS}</td>
+                  <td>
+                    <button type="button" class="btn btn-light">
+                      Info
+                    </button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-light">
+                      Add
+                    </button>
+                  </td>
+                </tr>;
+              })}
+            </tbody>
+          </table>
+          {/* {value.ROOMNO}{" "} */}
+        </div>
+        {/* <div className="STTUS"> {value.STATUS} </div> */}
+      </div>
+    </div>
+  );
 }
 
-// export default function Roominfo(props) {
-//   const displayroom = (props) => {
-//     const {roomno,room} = props;
-
-//     if(room.length > 0){
-//       return(
-//         room.map((rooms, index) => {
-//           console.log(rooms);
-//           return(
-//             <div className='rooms' key={rooms.ROOMNO}>
-//                <h5 className='status'>{rooms.STATUS}</h5>
-//             </div>
-//           )
-//         }
-//       ))
-//     }else{
-//       return ( <h5>no room yet</h5>)
-//     }
-//   }
-//   return(
-//     <>
-//     {displayroom(props)}
-//     </>
-//   )
-// }
-//  function Room() {
-
-//   const [room, Room] = useState([]);
-
-//   useEffect(() => {
-//     axios.get("http://localhost:3001/room").then((response) => {
-//       Room(response.data);
-//     });
-//   }, []);
-//   return (
-//     <div className="Room"> {room.map((value, key) => {
-//        return <div> {value.ROOMNO} </div>;
-//     })} 
-//     </div>
-// );
-//   }
-//   export default Room;
+/* <div class="container mt-4 text-center">
+        <div class="row">
+          <div class="col-xl-10 col-lg-8 col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              id="search"
+              placeholder="Search here"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="container mt-3">
+        <h5>Building : </h5>
+        <h5>Floor : </h5>
+      </div>
+      <div className="container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Room</th>
+              <th scope="col">Status</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">101</th>
+              <td>not available</td>
+              <td>
+                <button type="button" class="btn btn-light">
+                  Info
+                </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-light">
+                  Add
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">102</th>
+              <td>not available</td>
+              <td>
+                <button type="button" class="btn btn-light">
+                  Info
+                </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-light">
+                  Add
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">103</th>
+              <td>available</td>
+              <td>
+                <button type="button" class="btn btn-light">
+                  Info
+                </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-light">
+                  Add
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="container mt-3">
+        <h5>Amount of Room Available : </h5>
+        <h5>Amount of Room Not Available : </h5>
+      </div> */
