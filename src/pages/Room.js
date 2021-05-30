@@ -1,11 +1,12 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 function Room() {
   let { dormID } = useParams();
   const [room, setRoom] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     // const fetchData = async () => {
@@ -27,7 +28,16 @@ function Room() {
             <h1 className="text-dark text-center">Room</h1>
           </div>
         </div>
+        <div class="col-xl-10 col-lg-8 col-md-6">
+          <input
+            type="text"
+            class="form-control"
+            id="search"
+            placeholder="Search here"
+          />
+        </div>
       </div>
+
       <div>
         <div className="container">
           <table className="table table-hover">
@@ -41,12 +51,19 @@ function Room() {
             </thead>
             <tbody>
               {room.map((value, key) => {
+                let roomID = value.ROOMID;
+                let dormID = value.DORMID;
+
                 return (
                   <tr>
                     <td>{value.ROOMNO}</td>
                     <td>{value.STATUS}</td>
                     <td>
-                      <button type="button" className="btn btn-light">
+                      <button
+                        className="btn btn-light"
+                        type="submit"
+                        onClick={() => history.push(`/${dormID}/${roomID}`)}
+                      >
                         Info
                       </button>
                     </td>

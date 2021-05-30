@@ -7,6 +7,7 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import DormSetting from "./pages/DormSetting";
 import Room from "./pages/Room";
+import Info from "./pages/Info";
 import Invoice from "./pages/Invoice";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/register/Signup";
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/" exact component={Home} />
         <Route path="/dormsetting" component={DormSetting} />
         <Route path="/room/:dormID" component={Room} />
+        <Route path="/:dormID/:roomID" component={Info} />
         <Route path="/invoice" component={Invoice} />
         <Route path="/utility" component={Utility} />
         <Route path="/login" component={Login} />
