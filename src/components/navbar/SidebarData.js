@@ -34,16 +34,16 @@ export const SidebarData = [
     icon: <AiIcons.AiOutlineCalculator />,
     cName: "nav-text",
   },
-  // {
-  //   title: "Login",
-  //   path: "/login",
-  //   icon: <BiIcons.BiLogIn />,
-  //   cName: "nav-text",
-  // },
-  // {
-  //   title: "SignUp",
-  //   path: "/signup",
-  //   icon: <RiIcons.RiBillLine />,
-  //   cName: "nav-text",
-  // },
+  {
+    title: "Login",
+    path: "/login",
+    icon: <BiIcons.BiLogIn />,
+    cName: "nav-text",
+  },
+  {
+    title: "SignUp",
+    path: "/signup",
+    icon: <RiIcons.RiBillLine />,
+    cName: "nav-text",
+  },
 ];
