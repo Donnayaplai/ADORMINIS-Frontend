@@ -8,8 +8,8 @@ import Home from "./pages/home/Home";
 import DormSetting from "./pages/DormSetting";
 import Room from "./pages/Room";
 import Invoice from "./pages/Invoice";
-// import Login from "./pages/login/Login";
-// import SignUp from "./pages/register/Signup";
+import Login from "./pages/login/Login";
+import SignUp from "./pages/register/Signup";
 import Utility from "./pages/Utility";
 
 const App = () => {
@@ -19,11 +19,11 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/dormsetting" component={DormSetting} />
-        <Route path="/room" component={Room} />
+        <Route path="/:dormID" component={Room} />
         <Route path="/invoice" component={Invoice} />
         <Route path="/utility" component={Utility} />
-        {/* <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} /> */}
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
       </Switch>
     </Routers>
   );
