@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 
-export default function DormSetting() {
+function DormSetting() {
   const [DormNameTHReg, setDormNameTH] = useState("");
   const [DormNameENGReg, setDormNameENG] = useState("");
   const [AddressReg, setAddress] = useState("");
@@ -10,8 +10,7 @@ export default function DormSetting() {
   const [DistrictReg, setDistrict] = useState("");
   const [PostalCodeReg, setPostalCode] = useState("");
   const [ProvinceReg, setProvince] = useState("");
-  // const [BuildingNameReg, setBuildingName] = useState("");
-  // const [AmountofBuildingReg, setAmountofBuilding] = useState("");
+
   const DormInfoSubmit = () => {
     Axios.post("http://localhost:3001/dorminfo", {
       DormNameTH: DormNameTHReg,
@@ -22,8 +21,6 @@ export default function DormSetting() {
       District: DistrictReg,
       PostalCode: PostalCodeReg,
       Province: ProvinceReg,
-      // BuildingName: BuildingNameReg,
-      // AmountofBuilding: AmountofBuildingReg,
     }).then((response) => {
       console.log(response);
     });
@@ -31,7 +28,7 @@ export default function DormSetting() {
   return (
     <div>
       <div className="dormsetting mb-5">
-        <div className="container mt-3 text-center">
+        <div className="container text-center">
           <div className="row">
             <div className="col-xl-9 col-md-8 mx-auto ">
               <h1 className="text-dark text-center">Dormitory Information</h1>
@@ -42,7 +39,7 @@ export default function DormSetting() {
           <div className="container mt-3 mb-2">
             <h5>Information & Address</h5>
           </div>
-          <form method="POST" action="">
+          <form method="POST" action="/dorminfo">
             <div
               className="container col-10 mb-3 pt-2 pb-3"
               style={{ backgroundColor: "#EAE7E2" }}
@@ -78,18 +75,19 @@ export default function DormSetting() {
                     required
                   />
                 </div>
-                <div className="col-xl-8 col-lg-8 col-md-6">
+                <div className="col-xl-8 col-lg-8 col-md-6 ">
                   <label for="Address" className="form-label">
                     Address
                   </label>
-                  <textarea
+                  <input
+                    type="text"
                     name="Address"
                     className="form-control"
                     onChange={(e) => {
                       setAddress(e.target.value);
                     }}
                     placeholder="บ้านเลขที่/อาคาร/หมู่บ้าน/ หมู่ที่"
-                  ></textarea>
+                  ></input>
                 </div>
                 <div className="col-xl-8 col-lg-6 col-md-6">
                   <label for="Street" className="form-label">
@@ -253,34 +251,24 @@ export default function DormSetting() {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={(e) => {
-                      setBuildingName(e.target.value);
-                    }}
                     placeholder="ตัวอย่าง: สราญสุข"
                     required
                   />
                 </div>
-                <div clas="col-xl-6 col-lg-4 col-md-4">
+                <div className="col-xl-6 col-lg-4 col-md-4">
                   <label for="NumofBuilding" className="form-label">
                     Amount of Building
                   </label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    onChange={(e) => {
-                      setAmountofBuilding(e.target.value);
-                    }}
-                    required
-                  />
+                  <input type="text" className="form-control" required />
                 </div>
               </div>
-            </div> */}
+            </div>
 
-            {/* <div className="container mt-3 mb-2">
+            <div className="container mt-3 mb-2">
               <h5>Utitilities Setting</h5>
             </div>
 
-             <div
+            <div
               className="container col-10 pt-2 pb-3 mb-2"
               style={{ backgroundColor: "#EAE7E2" }}
             >
@@ -289,14 +277,7 @@ export default function DormSetting() {
                   <label for="inputPriceperUnit" className="form-label">
                     Price/Unit
                   </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => {
-                      setWater(e.target.value);
-                    }}
-                    required
-                  />
+                  <input type="text" className="form-control" required />
                 </div>
                 <div className="col-4">
                   <label for="inputMinimumUnit" className="form-label">
@@ -338,20 +319,86 @@ export default function DormSetting() {
                 />
               </div>
             </div> */}
+
             <button
-              className="btn"
+              type="button"
+              class="btn mt-3 float-end"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
               style={{
+                backgroundColor: "#C7E5F0",
+                borderRadius: "4px",
+                boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25);",
                 width: "200px",
                 height: "50px",
-                backgroundColor: "#C7E5F0",
-                float: "right",
-                marginTop: "10px",
+                marginRight: "90px",
               }}
-              type="submit"
-              onClick={DormInfoSubmit}
             >
               Save
             </button>
+
+            <div
+              class="modal fade"
+              id="staticBackdrop"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div
+                    class="modal-header"
+                    style={{
+                      backgroundColor: "#C7E5F0",
+                    }}
+                  >
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                      Confirmation
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure that your dormitory information is correct ?
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                      style={{
+                        borderRadius: "4px",
+                        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25);",
+                        width: "100px",
+                        height: "50px",
+                      }}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      onClick={DormInfoSubmit}
+                      class="btn"
+                      style={{
+                        borderRadius: "4px",
+                        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25);",
+                        width: "100px",
+                        height: "50px",
+                        backgroundColor: "#C7E5F0",
+                      }}
+                    >
+                      Ok
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -359,3 +406,4 @@ export default function DormSetting() {
     </div>
   );
 }
+export default DormSetting;
