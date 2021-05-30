@@ -1,9 +1,9 @@
-// import React from "react";
+import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export default function Room() {
+function Room() {
   let { dormID } = useParams();
   const [room, setRoom] = useState([]);
 
@@ -17,7 +17,7 @@ export default function Room() {
     });
     // fetchData()
   }, [dormID]);
-
+  console.log(`http://localhost:3001/room/${dormID}`);
   console.log(room);
   return (
     <div className="Room mb-5">
@@ -30,7 +30,7 @@ export default function Room() {
       </div>
       <div>
         <div className="container">
-          <table class="table table-hover">
+          <table className="table table-hover">
             <thead>
               <tr>
                 <th scope="col">Room</th>
@@ -41,20 +41,22 @@ export default function Room() {
             </thead>
             <tbody>
               {room.map((value, key) => {
-                <tr>
-                  <td>{value.ROOMNO}</td>
-                  <td>{value.STATUS}</td>
-                  <td>
-                    <button type="button" class="btn btn-light">
-                      Info
-                    </button>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-light">
-                      Add
-                    </button>
-                  </td>
-                </tr>;
+                return (
+                  <tr>
+                    <td>{value.ROOMNO}</td>
+                    <td>{value.STATUS}</td>
+                    <td>
+                      <button type="button" className="btn btn-light">
+                        Info
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" className="btn btn-light">
+                        Add
+                      </button>
+                    </td>
+                  </tr>
+                );
               })}
             </tbody>
           </table>
@@ -65,6 +67,7 @@ export default function Room() {
     </div>
   );
 }
+export default Room;
 
 /* <div class="container mt-4 text-center">
         <div class="row">
