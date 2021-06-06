@@ -4,14 +4,16 @@ import "./styles/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Navbar from "./components/navbar/Navbar";
-import Home from "./pages/home/Home";
+import Home from "./pages/Home";
 import DormSetting from "./pages/DormSetting";
 import Room from "./pages/Room";
-import Info from "./pages/Info";
+// import Info from "./pages/Info";
 import Invoice from "./pages/Invoice";
-import Login from "./pages/login/Login";
-import SignUp from "./pages/register/Signup";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Utility from "./pages/Utility";
+import Complaint from "./pages/Complaint";
+import Payment from "./pages/Payment";
 
 const App = () => {
   return (
@@ -20,12 +22,15 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/dormsetting" component={DormSetting} />
-        <Route path="/room/:dormID" component={Room} />
-        <Route path="/:dormID/:roomID" component={Info} />
+        <Route path="/room" component={Room} />
+        {/* <Route path="/room/:dormID" component={Room} />
+        <Route path="/:dormID/:roomID" component={Info} /> */}
         <Route path="/invoice" component={Invoice} />
+        <Route path="/complain" component={Complaint} />
+        <Route path="/payment" component={Payment} />
         <Route path="/utility" component={Utility} />
         <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
+        <Route path="/signup" component={Signup} />
       </Switch>
     </Routers>
   );
