@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Signup.css";
+import "../styles/Signup.css";
 function Signup() {
   const [emailReg, setEmailReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
