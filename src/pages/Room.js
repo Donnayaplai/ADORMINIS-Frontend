@@ -74,6 +74,11 @@ function Room() {
                         <th scope="row">{i.ROOMNO}</th>
                         <td></td>
                         <td>
+                          <button type="button" class="btn btn-light">
+                            Info
+                          </button>
+                        </td>
+                        <td>
                           <button
                             type="button"
                             class="btn btn-light"
@@ -81,7 +86,7 @@ function Room() {
                             data-bs-target="#exampleModal"
                             data-bs-whatever="@mdo"
                           >
-                            Info
+                            Add
                           </button>
                           <div
                             class="modal fade"
@@ -141,11 +146,6 @@ function Room() {
                               </div>
                             </div>
                           </div>
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-light">
-                            Add
-                          </button>
                         </td>
                       </tr>
                     ))}
