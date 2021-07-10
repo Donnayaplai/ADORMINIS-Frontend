@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-
+import "../styles/App.css";
 function Room() {
   const [data, SetData] = useState([]);
-
+  let rowstyle = {
+    backgroundColor: "#EAE7E2",
+    border: "none",
+    textAlign: "center",
+  };
+  let thead = {
+    backgroundColor: "#C7E5F0",
+    textAlign: "center",
+    color: "black",
+    fontWeight: "bold",
+    fontSize: "18px",
+    height: "30px",
+  };
   useEffect(() => {
     Axios.get("http://www.localhost:3001/")
       .then((res) => {
@@ -14,67 +26,147 @@ function Room() {
         console.log(err);
       }, []);
   });
+
   return (
     <div className="container">
       <h1>Room Status</h1>
-      <div class="inner-form">
-        <div class="input-field">
-          <input
-            class="form-control"
-            id="choices-text-preset-values"
-            type="text"
-            placeholder="Type to search..."
-          />
-          <button class="btn-search" type="button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
-            </svg>
-          </button>
+      <div className="row justify-content-center mt-3 mb-3">
+        <div className="col-12 col-md-10 col-lg-8">
+          <form className="card-body row no-gutters align-items-center">
+            <div className="col-auto">
+              <i className="fas fa-search h4 text-body"></i>
+            </div>
+            <div className="col">
+              <input
+                className="form-control form-control-lg form-control-borderless"
+                type="search"
+                placeholder="Type to search..."
+              ></input>
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-lg btn-success" type="submit">
+                Search
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Room No.</th>
-            <th scope="col">Status</th>
-            <th scope="col">Resident Info</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((i) => (
-            <tr>
-              <th scope="row">{i.ROOMNO}</th>
-              <td></td>
-              {/* {[i.ALLROOMSTATUS]}</td> */}
-              <td>
-                <button type="button" class="btn btn-light">
-                  Info
-                </button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-light">
-                  Add
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div class="container overflow-hidden">
+        <div class="row gx-3">
+          <div class="col-7">
+            <div class="border">
+              <div className="table-responsive rounded">
+                <table
+                  className="table table-hover align: middle table-borderless"
+                  style={{ maxWidth: "800px" }}
+                >
+                  <thead style={thead}>
+                    <tr>
+                      <th scope="col">Room No.</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Resident Info</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((i) => (
+                      <tr style={rowstyle}>
+                        <th scope="row">{i.ROOMNO}</th>
+                        <td></td>
+                        <td>
+                          <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                            data-bs-whatever="@mdo"
+                          >
+                            Info
+                          </button>
+                          <div
+                            class="modal fade"
+                            id="exampleModal"
+                            tabindex="-1"
+                            aria-labelledby="exampleModalLabel"
+                            aria-hidden="true"
+                          >
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div
+                                  class="modal-header"
+                                  style={{ backgroundColor: "#C7E5F0" }}
+                                >
+                                  <h5
+                                    class="modal-title"
+                                    id="exampleModalLabel"
+                                  >
+                                    Resident Code
+                                  </h5>
+                                  <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div class="modal-body">
+                                  <form>
+                                    <div class="mb-3">
+                                      <label
+                                        for="message-text"
+                                        class="col-form-label"
+                                      >
+                                        Message:
+                                      </label>
+                                      <textarea
+                                        class="form-control"
+                                        id="message-text"
+                                        placeholder="Please enter your resident code here..."
+                                      ></textarea>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                  >
+                                    Close
+                                  </button>
+                                  <button type="button" class="btn btn-primary">
+                                    Send message
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <button type="button" class="btn btn-light">
+                            Add
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-5">
+            <div
+              class="p-3 border"
+              style={{ backgroundColor: "#C7E5F0", maxHeight: "400px" }}
+            ></div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 export default Room;
 
-/* // import React, { useState, useEffect } from "react";
-// import { useParams, useHistory } from "react-router-dom";
-
-// const Room = () => { */
 //   const [room, setRoom] = useState(false);
 //   const [hasError, setError] = useState({});
 //   async function fetchData() {
