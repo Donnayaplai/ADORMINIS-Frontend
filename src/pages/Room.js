@@ -74,9 +74,61 @@ function Room() {
                         <th scope="row">{i.ROOMNO}</th>
                         <td></td>
                         <td>
-                          <button type="button" class="btn btn-light">
+                          <button
+                            type="button"
+                            class="btn btn-light"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleInfo"
+                            data-bs-whatever="@mdo"
+                          >
                             Info
                           </button>
+                          <div
+                            class="modal fade"
+                            id="exampleInfo"
+                            tabindex="-1"
+                            aria-labelledby="exampleModalInfo"
+                            aria-hidden="true"
+                          >
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div
+                                  class="modal-header"
+                                  style={{ backgroundColor: "#C7E5F0" }}
+                                >
+                                  <h5
+                                    class="modal-title"
+                                    id="exampleModalInfo"
+                                  >
+                                    Resident Information
+                                  </h5>
+                                  <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div class="modal-body">
+                                  Information
+                                </div>
+                                <div class="modal-footer">
+                                  <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                  >
+                                    Close
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary">
+                                    Ok
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </td>
                         <td>
                           <button
@@ -121,7 +173,7 @@ function Room() {
                                         for="message-text"
                                         class="col-form-label"
                                       >
-                                        Message:
+                                        Resident Code:
                                       </label>
                                       <textarea
                                         class="form-control"
@@ -131,6 +183,7 @@ function Room() {
                                     </div>
                                   </form>
                                 </div>
+                                <p>No resident code?</p>
                                 <div class="modal-footer">
                                   <button
                                     type="button"
@@ -139,9 +192,48 @@ function Room() {
                                   >
                                     Close
                                   </button>
-                                  <button type="button" class="btn btn-primary">
-                                    Send message
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#addinfomodal"
+                                  >
+                                    Confirm
                                   </button>
+                                  <div class="modal fade" 
+                                  id="addinfomodal" 
+                                  tabindex="-1" 
+                                  aria-labelledby="addinfoModalLabel" 
+                                  aria-hidden="true"
+                                  >
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 
+                                          class="modal-title"
+                                           id="addinfoModalLabel">Resident Information</h5>
+                                          <button 
+                                          type="button" 
+                                          class="btn-close" 
+                                          data-bs-dismiss="modal" 
+                                          aria-label="Close">
+
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          Personal Information
+                                          Additional Information
+                                        </div>
+                                        <div 
+                                        class="modal-footer">
+                                          <button type="button" 
+                                          class="btn btn-secondary" 
+                                          data-bs-dismiss="modal">Cancle</button>
+                                          <button type="button" class="btn btn-primary">Save</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -163,7 +255,9 @@ function Room() {
         </div>
       </div>
     </div>
+
   );
+
 }
 export default Room;
 
