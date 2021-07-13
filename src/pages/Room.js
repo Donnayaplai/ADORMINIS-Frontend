@@ -55,7 +55,7 @@ function Room(props) {
         <div className="row gx-3">
           <div className="col-7">
             <div className="border">
-              <div className="table-responsive rounded">
+              <div className="table-responsive">
                 <table
                   className="table table-hover align: middle table-borderless"
                   style={{ maxWidth: "800px" }}
@@ -112,7 +112,10 @@ function Room(props) {
                                       aria-label="Close"
                                     ></button>
                                   </div>
-                                  <div className="modal-body">Information</div>
+                                  <div className="modal-body">
+                                    Information
+                                    <h6>Room 101</h6>
+                                  </div>
                                   <div className="modal-footer">
                                     <button
                                       type="button"
@@ -227,23 +230,129 @@ function Room(props) {
                                           </div>
 
                                           <div className="modal-body">
-                                            Personal Information Additional
-                                            Information
-                                          </div>
-                                          <div className="modal-footer">
-                                            <button
-                                              type="button"
-                                              className="btn btn-secondary"
-                                              data-bs-dismiss="modal"
-                                            >
-                                              Cancle
-                                            </button>
-                                            <button
-                                              type="button"
-                                              className="btn btn-primary"
-                                            >
-                                              Save
-                                            </button>
+                                            <div className="row">
+                                              <div className="col-xl-8 col-lg-6 col-md-6">
+                                                <h6> Personal Information</h6>
+                                              </div>
+                                              <div className="col-sm-9">
+                                                <label
+                                                  for="Name"
+                                                  className="form-label"
+                                                >
+                                                  Name
+                                                </label>
+                                                <input
+                                                  name="Name"
+                                                  type="text"
+                                                  className="form-control"
+                                                  placeholder="สมศรี"
+                                                  required
+                                                />
+                                              </div>
+                                              <div className="col-sm-9">
+                                                <label
+                                                  for="Lastname"
+                                                  className="form-label"
+                                                >
+                                                  Lastname
+                                                </label>
+                                                <input
+                                                  name="Lastname"
+                                                  type="text"
+                                                  className="form-control"
+                                                  placeholder="มีชัย"
+                                                  required
+                                                />
+                                              </div>
+                                              <div className="col-sm-9">
+                                                <label
+                                                  for="Telephone"
+                                                  className="form-label"
+                                                >
+                                                  Telephone no.
+                                                </label>
+                                                <input
+                                                  name="Telephone"
+                                                  type="text"
+                                                  className="form-control"
+                                                  placeholder="083-254-7819"
+                                                  required
+                                                />
+                                              </div>
+                                              <div className="col-sm-9">
+                                                <label
+                                                  for="Gender"
+                                                  className="form-label"
+                                                >
+                                                  Gender
+                                                </label>
+                                                <input
+                                                  name="Gender"
+                                                  type="text"
+                                                  className="form-control"
+                                                  placeholder="Female"
+                                                  required
+                                                />
+                                              </div>
+                                              <h6> Additional Information</h6>
+                                              <div className="col-sm-9">
+                                                <label
+                                                  for="contract_start"
+                                                  className="form-label"
+                                                >
+                                                  วันเริ่มสัญญา
+                                                </label>
+                                                <input
+                                                  name="contract_start"
+                                                  type="date"
+                                                  className="form-control"
+                                                  required
+                                                />
+                                              </div>
+                                              <div className="col-sm-9">
+                                                <label
+                                                  for="contract_end"
+                                                  className="form-label"
+                                                >
+                                                  วันสิ้นสุดสัญญา
+                                                </label>
+                                                <input
+                                                  name="contract_end"
+                                                  type="date"
+                                                  className="form-control"
+                                                  required
+                                                />
+                                              </div>
+                                              <div className="col-sm-9">
+                                                <label
+                                                  for="check_in"
+                                                  className="form-label"
+                                                >
+                                                  วันที่เข้าพัก
+                                                </label>
+                                                <input
+                                                  name="check_in"
+                                                  type="date"
+                                                  className="form-control"
+                                                  required
+                                                />
+                                              </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-bs-dismiss="modal"
+                                              >
+                                                Cancle
+                                              </button>
+                                              <button
+                                                type="button"
+                                                class="btn btn-primary"
+                                              >
+                                                Save
+                                              </button>
+                                            </div>
                                           </div>
                                         </div>
                                       </div>
