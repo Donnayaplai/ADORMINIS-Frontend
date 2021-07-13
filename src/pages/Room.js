@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "../styles/App.css";
+import ShowRoomAmount from "../components/Room/ShowRoomAmount";
 function Room(props) {
   const [data, SetData] = useState([]);
   let rowstyle = {
@@ -52,7 +53,7 @@ function Room(props) {
         </div>
       </div>
       <div className="container overflow-hidden">
-        <div className="row gx-3">
+        <div className="row gx-4">
           <div className="col-7">
             <div className="border">
               <div className="table-responsive">
@@ -371,10 +372,7 @@ function Room(props) {
             </div>
           </div>
           <div className="col-5">
-            <div
-              className="p-3 border"
-              style={{ backgroundColor: "#C7E5F0", maxHeight: "400px" }}
-            ></div>
+            <ShowRoomAmount />
           </div>
         </div>
       </div>
