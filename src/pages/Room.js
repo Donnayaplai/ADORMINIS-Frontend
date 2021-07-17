@@ -114,8 +114,22 @@ function Room(props) {
                                     ></button>
                                   </div>
                                   <div className="modal-body">
-                                    Information
-                                    <h6>Room 101</h6>
+                                    <div
+                                      className="container col-10 mb-3 pt-2 pb-3"
+                                      style={{ backgroundColor: "#EAE7E2" }}
+                                    >
+                                      <div className="row">
+                                        <div className=""></div>
+                                        <h6>Room 101</h6>
+                                        <p>Name</p>
+                                        <p>Lastname</p>
+                                        <p>Telephone no.</p>
+                                        <p>Gender</p>
+                                        <p>วันเริ่มสัญญา</p>
+                                        <p>วันสิ้นสุดสัญญา</p>
+                                        <p>วันที่เข้าพัก</p>
+                                      </div>
+                                    </div>
                                   </div>
                                   <div className="modal-footer">
                                     <button
