@@ -3,18 +3,17 @@ import { BrowserRouter as Routers, Switch, Route } from "react-router-dom";
 import "./styles/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import DormSetting from "./pages/DormSetting";
 import Room from "./pages/Room";
-// import Info from "./pages/Info";
 import Invoice from "./pages/Invoice";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Utility from "./pages/Utility";
 import Complaint from "./pages/Complaint";
 import Payment from "./pages/Payment";
-
+import NoCodeRoom from "./components/Room/NoCodeRoom";
 const App = () => {
   return (
     <Routers>
@@ -23,6 +22,7 @@ const App = () => {
         <Route path="/" exact component={Home} />
         <Route path="/dormsetting" component={DormSetting} />
         <Route path="/room" component={Room} />
+        <Route path="/addresident/nocode" exact component={NoCodeRoom} />
         {/* <Route path="/room/:dormID" component={Room} />
         <Route path="/:dormID/:roomID" component={Info} /> */}
         <Route path="/invoice" component={Invoice} />
