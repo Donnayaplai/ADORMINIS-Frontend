@@ -5,10 +5,10 @@ function ShowRoomAmount() {
     backgroundColor: "#FFFFFF",
     border: "none",
     textAlign: "center",
-    width: "400px",
-    height: "160px",
+    maxWidth: "400px",
+    maxHeight: "160px",
     borderRadius: "10px",
-    textAlign: "center",
+    height: "50%",
   };
   return (
     <div>

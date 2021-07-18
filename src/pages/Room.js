@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import "../styles/App.css";
+import "../styles/Room.css";
 import ShowRoomAmount from "../components/Room/ShowRoomAmount";
 function Room(props) {
   const [data, SetData] = useState([]);
@@ -16,6 +16,19 @@ function Room(props) {
     fontWeight: "bold",
     fontSize: "18px",
     height: "30px",
+  };
+  let formcontent = {
+    backgroundColor: "#EAE7E2",
+    maxWidth: "400px",
+    width: "90%",
+    maxHeight: "500px",
+    border: "none",
+    textAlign: "center",
+    padding: "10px",
+    marginTop: "10px",
+    borderRadius: "10px",
+    marginLeft: "auto",
+    marginRight: "auto",
   };
   useEffect(() => {
     Axios.get("http://www.localhost:3001/")
@@ -173,12 +186,12 @@ function Room(props) {
                                     className="modal-header"
                                     style={{ backgroundColor: "#C7E5F0" }}
                                   >
-                                    <h5
+                                    <h4
                                       className="modal-title"
                                       id="exampleModalLabel"
                                     >
                                       Resident Code
-                                    </h5>
+                                    </h4>
                                     <button
                                       type="button"
                                       className="btn-close"
@@ -189,28 +202,36 @@ function Room(props) {
                                   <div className="modal-body">
                                     <form>
                                       <div className="mb-3">
-                                        <label
+                                        {/* <label
                                           htmlFor="message-text"
                                           className="col-form-label"
                                         >
                                           Resident Code:
-                                        </label>
+                                        </label> */}
                                         <textarea
                                           className="form-control"
                                           id="message-text"
                                           placeholder="Please enter your resident code here..."
                                         ></textarea>
+                                        <p>
+                                          <a
+                                            href="http://localhost:3000/addresident/nocode"
+                                            target="_blank"
+                                          >
+                                            No resident code?
+                                          </a>
+                                        </p>
                                       </div>
                                     </form>
                                   </div>
-                                  <p>No resident code?</p>
+
                                   <div className="modal-footer">
                                     <button
                                       type="button"
                                       className="btn btn-secondary"
                                       data-bs-dismiss="modal"
                                     >
-                                      Close
+                                      Cancle
                                     </button>
                                     <button
                                       type="button"
@@ -227,147 +248,171 @@ function Room(props) {
                                       aria-labelledby="addinfoModalLabel"
                                       aria-hidden="true"
                                     >
-                                      <div className="modal-dialog">
+                                      <div className="modal-dialog modal-dialog-scrollable">
                                         <div className="modal-content">
                                           <div className="modal-header">
-                                            <h5
+                                            <h4
                                               className="modal-title"
                                               id="addinfoModalLabel"
                                             >
                                               Resident Information
-                                            </h5>
-                                            <button
-                                              type="button"
-                                              className="btn-close"
-                                              data-bs-dismiss="modal"
-                                              aria-label="Close"
-                                            ></button>
+                                            </h4>
                                           </div>
 
                                           <div className="modal-body">
-                                            <div className="row">
-                                              <div className="col-xl-8 col-lg-6 col-md-6">
-                                                <h6> Personal Information</h6>
-                                              </div>
-                                              <div className="col-sm-9">
+                                            <h6> Personal Information</h6>
+                                            <div
+                                              className="form-content"
+                                              style={formcontent}
+                                            >
+                                              <div className="mb-3">
                                                 <label
-                                                  for="Name"
+                                                  for="exampleFormControlInput1"
                                                   className="form-label"
                                                 >
-                                                  Name
+                                                  Firstname
                                                 </label>
                                                 <input
-                                                  name="Name"
                                                   type="text"
                                                   className="form-control"
-                                                  placeholder="สมศรี"
-                                                  required
+                                                  id="exampleFormControlInput1"
+                                                  placeholder="Donnaya"
+                                                  aria-label="Disabled input example"
+                                                  disabled
                                                 />
                                               </div>
-                                              <div className="col-sm-9">
+                                              <div className="mb-3">
                                                 <label
-                                                  for="Lastname"
+                                                  for="exampleFormControlInput1"
                                                   className="form-label"
                                                 >
                                                   Lastname
                                                 </label>
                                                 <input
-                                                  name="Lastname"
                                                   type="text"
                                                   className="form-control"
-                                                  placeholder="มีชัย"
-                                                  required
+                                                  id="exampleFormControlInput1"
+                                                  placeholder="Wangwongwatana"
+                                                  aria-label="Disabled input example"
+                                                  disabled
                                                 />
                                               </div>
-                                              <div className="col-sm-9">
+                                              <div className="mb-3">
                                                 <label
-                                                  for="Telephone"
+                                                  for="exampleFormControlInput1"
                                                   className="form-label"
                                                 >
-                                                  Telephone no.
+                                                  ID Card
                                                 </label>
                                                 <input
-                                                  name="Telephone"
                                                   type="text"
                                                   className="form-control"
-                                                  placeholder="083-254-7819"
-                                                  required
+                                                  id="exampleFormControlInput1"
+                                                  placeholder="1234567890123"
+                                                  aria-label="Disabled input example"
+                                                  disabled
                                                 />
                                               </div>
-                                              <div className="col-sm-9">
+                                              <div className="mb-3">
                                                 <label
-                                                  for="Gender"
+                                                  for="exampleFormControlInput1"
+                                                  className="form-label"
+                                                >
+                                                  Tel No.
+                                                </label>
+                                                <input
+                                                  type="text"
+                                                  className="form-control"
+                                                  id="exampleFormControlInput1"
+                                                  placeholder="087-766-7777"
+                                                  aria-label="Disabled input example"
+                                                  disabled
+                                                />
+                                              </div>
+                                              <div className="mb-3">
+                                                <label
+                                                  for="exampleFormControlInput1"
                                                   className="form-label"
                                                 >
                                                   Gender
                                                 </label>
                                                 <input
-                                                  name="Gender"
                                                   type="text"
                                                   className="form-control"
-                                                  placeholder="Female"
-                                                  required
+                                                  id="exampleFormControlInput1"
+                                                  placeholder="name@example.com"
+                                                  aria-label="Disabled input example"
+                                                  disabled
                                                 />
                                               </div>
-                                              <h6> Additional Information</h6>
-                                              <div className="col-sm-9">
+                                            </div>
+                                            <h6> Additional Information</h6>
+                                            <div
+                                              className="form-content"
+                                              style={formcontent}
+                                            >
+                                              <div className="mb-3">
                                                 <label
-                                                  for="contract_start"
+                                                  for="exampleFormControlInput1"
                                                   className="form-label"
                                                 >
                                                   วันเริ่มสัญญา
                                                 </label>
                                                 <input
-                                                  name="contract_start"
                                                   type="date"
                                                   className="form-control"
-                                                  required
+                                                  id="exampleFormControlInput1"
+                                                  placeholder="name@example.com"
+                                                  aria-label="Disabled input example"
                                                 />
                                               </div>
-                                              <div className="col-sm-9">
+                                              <div className="mb-3">
                                                 <label
-                                                  for="contract_end"
-                                                  className="form-label"
-                                                >
-                                                  วันสิ้นสุดสัญญา
-                                                </label>
-                                                <input
-                                                  name="contract_end"
-                                                  type="date"
-                                                  className="form-control"
-                                                  required
-                                                />
-                                              </div>
-                                              <div className="col-sm-9">
-                                                <label
-                                                  for="check_in"
+                                                  for="exampleFormControlInput1"
                                                   className="form-label"
                                                 >
                                                   วันที่เข้าพัก
                                                 </label>
                                                 <input
-                                                  name="check_in"
                                                   type="date"
                                                   className="form-control"
-                                                  required
+                                                  id="exampleFormControlInput1"
+                                                  placeholder="name@example.com"
+                                                  aria-label="Disabled input example"
+                                                />
+                                              </div>
+                                              <div className="mb-3">
+                                                <label
+                                                  for="exampleFormControlInput1"
+                                                  className="form-label"
+                                                >
+                                                  วันที่เข้าพัก
+                                                </label>
+                                                <input
+                                                  type="date"
+                                                  className="form-control"
+                                                  id="exampleFormControlInput1"
+                                                  placeholder="name@example.com"
+                                                  aria-label="Disabled input example"
                                                 />
                                               </div>
                                             </div>
-                                            <div class="modal-footer">
-                                              <button
-                                                type="button"
-                                                class="btn btn-secondary"
-                                                data-bs-dismiss="modal"
-                                              >
-                                                Cancle
-                                              </button>
-                                              <button
-                                                type="button"
-                                                class="btn btn-primary"
-                                              >
-                                                Save
-                                              </button>
-                                            </div>
+                                          </div>
+
+                                          <div className="modal-footer">
+                                            <button
+                                              type="button"
+                                              className="btn btn-secondary"
+                                              data-bs-dismiss="modal"
+                                            >
+                                              Cancle
+                                            </button>
+                                            <button
+                                              type="button"
+                                              className="btn btn-primary"
+                                            >
+                                              Save
+                                            </button>
                                           </div>
                                         </div>
                                       </div>
