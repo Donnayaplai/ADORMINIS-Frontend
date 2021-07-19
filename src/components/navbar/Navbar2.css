@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+/* div.container-fluid {
+  margin-top: -5px;
+} */
+.navbar {
+  background-color: #97d9fb;
+  width: auto;
+  height: 50px;
+}
+a.navbar-brand {
+  margin-top: 0;
+  padding-top: 0;
+}
+.nav-item {
+  background-color: #97d9fb;
+  max-width: 150px;
+  max-height: 50px;
+}
+.navbar-toggler-icon {
+  width: 20px;
+  height: 20px;
+}
+li.nav-item {
+  margin-right: 10px;
+}
+li.nav-item a.nav-link :hover {
+  color: brown;
+}
