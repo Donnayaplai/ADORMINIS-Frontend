@@ -8,8 +8,12 @@
 } */
 .navbar {
   background-color: #97d9fb;
-  width: auto;
+  width: 100%;
   height: 50px;
+  top: 0;
+  position: static;
+  transition: top 0.3s;
+  z-index: 100;
 }
 a.navbar-brand {
   margin-top: 0;

@@ -9,13 +9,16 @@ const Navbar2 = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <img
-          src={Logo}
-          alt="Adorminis"
-          width="30px"
-          height="30px"
-          style={{ marginRight: "10px" }}
-        />
+        <a href="/">
+          <img
+            src={Logo}
+            alt="Adorminis"
+            width="30px"
+            height="30px"
+            style={{ marginRight: "10px" }}
+          />
+        </a>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -68,6 +71,11 @@ const Navbar2 = () => {
             <li className="nav-item">
               <a className="nav-link" href="#">
                 History
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/personalinfo">
+                PersonalInfo
               </a>
             </li>
           </ul>
