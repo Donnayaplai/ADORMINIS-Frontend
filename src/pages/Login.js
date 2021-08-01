@@ -1,182 +1,184 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Axios from "axios";
+import React, { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 
-function Login() {
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+
+import { login } from "../actions/auth";
+
+const required = (value) => {
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        This field is required!
+      </div>
+    );
+  }
+};
+
+const Login = (props) => {
+  const form = useRef();
+  const checkBtn = useRef();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const [loginStatus, setLoginStatus] = useState("");
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
 
-  const login = () => {
-    Axios.post("http://localhost:3001/login", {
-      email: email,
-      password: password,
-    }).then((response) => {
-      if (response.data.message) {
-        setLoginStatus(response.data.message);
-      } else {
-        setLoginStatus(response.data[0].username);
-      }
-    });
+  const dispatch = useDispatch();
+
+  const onChangeEmail = (e) => {
+    const email = e.target.value;
+    setEmail(email);
   };
-  // useEffect(() => {
-  //   Axios.get("http://localhost:3001/login").then((response) => {
-  //     if (response.data.loggedIn == true) {
-  //       setLoginStatus(response.data.user[0].username);
-  //     }
-  //   });
-  // }, []);
+
+  const onChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    form.current.validateAll();
+
+    if (checkBtn.current.context._errors.length === 0) {
+      dispatch(login(email, password))
+        .then(() => {
+          props.history.push("/home");
+          window.location.reload();
+        })
+        .catch(() => {
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+    }
+  };
+
+  if (isLoggedIn) {
+    return <Redirect to="/home" />;
+  }
+
   return (
-    <div>
-      <div className="container">
-        <div className="form-header">
-          <h1>Login with Adorminis</h1>
-        </div>
-        <div className="form-group">
-          <form action="">
-            <div id="form-soc">
-              <button
-                type="submit"
-                className="btn-gg"
-                style={{
-                  backgroundColor: "#CD5642",
-                  marginRight: "10px",
-                }}
-              >
-                Google
-              </button>
-              <button
-                type="submit"
-                className="btn-fb"
-                style={{
-                  backgroundColor: "#415993",
-                }}
-              >
-                Facebook
-              </button>
-            </div>
+    <div className="container">
+      <div className="row">
+        <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div className="card border-0 shadow rounded-3 my-5">
+            <div
+              className="card-body p-4 p-sm-5"
+              style={{ backgroundColor: "#EAE7E2" }}
+            >
+              <h3 className="card-title text-center mb-5 text-uppercase">
+                Login with Adorminis
+              </h3>
+              <Form onSubmit={handleLogin} ref={form}>
+                <div className="form-floating mb-3">
+                  <Input
+                    type="email"
+                    className="form-control form-control-lg border-0"
+                    id="email"
+                    placeholder="Email"
+                    name="email"
+                    value={email}
+                    onChange={onChangeEmail}
+                    validations={[required]}
+                  />
+                </div>
+                <div className="form-floating mb-3">
+                  <Input
+                    type="password"
+                    className="form-control form-control-lg border-0"
+                    id="floatingPassword"
+                    placeholder="Password"
+                    name="password"
+                    value={password}
+                    onChange={onChangePassword}
+                    validations={[required]}
+                  />
+                </div>
 
-            <div>
-              <input
-                type="text"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                placeholder="Enter your email"
-                name="email"
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                placeholder="Enter your password"
-                name="password"
-                required
-              />
-            </div>
-
-            <button type="submit" className="registerbtn" onClick={login}>
-              Login
-            </button>
-          </form>
-        </div>
-        <h1>{loginStatus}</h1>
-      </div>
-    </div>
-  );
-}
-export default Login;
-/* <div className="login-form">
-        <div class="container mt-5 text-center">
-          <div class="row">
-            <div class="col-xl-9 col-md-8 mx-auto ">
-              <h1 class="text-dark text-center">Signin with Adorminis</h1>
-            </div>
-          </div>
-        </div>
-        {/* <form onSubmit={handleLogin} ref={form}> */
-/* <form> */
-/* <div
-            class="container mx-auto mt-3"
-            style={{
-              backgroundColor: "#EAE7E2",
-              width: "600px",
-              height: "500px",
-            }}
-          >
-            <div className="container">
-              <div class="row">
-                <div class="col-4">
+                <div className="form-check mb-3">
+                  <Input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="rememberPasswordCheck"
+                  />
+                  <label
+                    className="form-check-label"
+                    for="rememberPasswordCheck"
+                  >
+                    Remember password
+                  </label>
+                </div>
+                <div className="d-grid">
                   <button
-                    class="btn btn-primary mt-4"
-                    href="#"
+                    className="btn btn-login text-uppercase fw-bold"
                     type="submit"
                     style={{
-                      backgroundColor: "#CD5642",
-                      width: "200px",
-                      height: "60px",
+                      fontSize: "0.9rem",
+                      letterSpacing: "0.05rem",
+                      padding: "0.75rem 1rem",
+                      color: "white !important",
+                      backgroundColor: "#c7e5f0",
+                      boxShadow: "0px 4px 4px 0px #00000040",
                     }}
+                    disabled={loading}
                   >
-                    Google
+                    Login
                   </button>
+                </div>
+                <hr className="my-4" />
+                <div className="d-grid mb-2">
                   <button
-                    class="btn btn-primary mt-4"
-                    href="#"
+                    className="btn btn-google btn-login text-uppercase fw-bold"
                     type="submit"
                     style={{
-                      backgroundColor: "#415993",
-                      width: "200px",
-                      height: "60px",
+                      color: "white !important",
+                      backgroundColor: "#cd5642",
+                      boxShadow: "0px 4px 4px 0px #00000040",
                     }}
                   >
+                    <i className="fab fa-google me-2"></i> Sign in with Google
+                  </button>
+                </div>
+                <div className="d-grid">
+                  <button
+                    className="btn btn-facebook btn-login text-uppercase fw-bold"
+                    type="submit"
+                    style={{
+                      color: "white !important",
+                      backgroundColor: "#415993",
+                      boxShadow: "0px 4px 4px 0px #00000040",
+                    }}
+                  >
+                    <i className="fab fa-facebook-f me-2"></i> Sign in with
                     Facebook
                   </button>
                 </div>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 mt-3">
-                <label for="email" class="form-label">
-                  Email
-                </label>
-                <input
-                  name="email"
-                  type="text"
-                  class="form-control"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-6">
-                <label for="password" class="form-label">
-                  Password
-                </label>
-                <input
-                  name="password"
-                  type="password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  class="form-control"
-                />
-              </div>
+
+                {message && (
+                  <div className="form-group">
+                    <div className="alert alert-danger" role="alert">
+                      {message}
+                    </div>
+                  </div>
+                )}
+                <CheckButton style={{ display: "none" }} ref={checkBtn} />
+              </Form>
             </div>
-            <button
-              onClick={login}
-              class="btn mt-3 mb-10"
-              style={{
-                width: "200px",
-                height: "50px",
-                backgroundColor: "#C7E5F0",
-                float: "right",
-              }}
-              type="submit"
-            >
-              Login
-            </button>
           </div>
-        </form>
-      </div> */
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
