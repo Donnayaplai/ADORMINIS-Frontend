@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import "../styles/Room.css";
-import ShowRoomAmount from "../components/Room/ShowRoomAmount";
+import "./Room.css";
+import ShowRoomAmount from "./ShowRoomAmount";
 function Room(props) {
   const [data, SetData] = useState([]);
   let rowstyle = {
@@ -43,7 +43,9 @@ function Room(props) {
 
   return (
     <div className="container">
-      <h1>Room Status</h1>
+      <h1 className="text-center" id="roomcontent">
+        สถานะห้องพัก
+      </h1>
       <div className="row justify-content-center mt-3 mb-3">
         <div className="col-12 col-md-10 col-lg-8">
           <form className="card-body row no-gutters align-items-center">
@@ -54,12 +56,12 @@ function Room(props) {
               <input
                 className="form-control form-control-lg form-control-borderless"
                 type="search"
-                placeholder="Type to search..."
+                placeholder="พิมพ์เพื่อค้นหา..."
               ></input>
             </div>
             <div className="col-auto">
               <button className="btn btn-lg btn-success" type="submit">
-                Search
+                ค้นหา
               </button>
             </div>
           </form>
@@ -76,9 +78,9 @@ function Room(props) {
                 >
                   <thead style={thead}>
                     <tr>
-                      <th scope="col">Room No.</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Resident Info</th>
+                      <th scope="col">ห้องที่</th>
+                      <th scope="col">สถานะ</th>
+                      <th scope="col">ข้อมูลคนพัก</th>
                       <th scope="col"></th>
                     </tr>
                   </thead>
@@ -215,7 +217,7 @@ function Room(props) {
                                         ></textarea>
                                         <p>
                                           <a
-                                            href="http://localhost:3000/addresident/nocode"
+                                            href="/addresident/nocode"
                                             target="_blank"
                                           >
                                             No resident code?

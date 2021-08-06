@@ -21,20 +21,32 @@ function ShowRoomAmount() {
         }}
       >
         <div className="mb-4 pt-3" style={ShowAmountCard}>
-          <h3 className="fw-bold">Amount of Room Available</h3>
+          <h3 className="fw-bold">จำนวนห้องที่ว่างทั้งหมด</h3>
           <p style={{ fontSize: "40px", fontWeight: "bolder" }}>
             100
-            <span style={{ fontSize: "40px", fontWeight: "normal" }}>
-              rooms
+            <span
+              style={{
+                fontSize: "40px",
+                fontWeight: "normal",
+                marginLeft: "10px",
+              }}
+            >
+              ห้อง
             </span>
           </p>
         </div>
         <div className="pt-3" style={ShowAmountCard}>
-          <h3 class="fw-bold">Amount of Room Not Available</h3>
+          <h3 class="fw-bold">จำนวนห้องที่ไม่ว่างทั้งหมด</h3>
           <p style={{ fontSize: "40px", fontWeight: "bolder" }}>
             100
-            <span style={{ fontSize: "40px", fontWeight: "normal" }}>
-              rooms
+            <span
+              style={{
+                fontSize: "40px",
+                fontWeight: "normal",
+                marginLeft: "10px",
+              }}
+            >
+              ห้อง
             </span>
           </p>
         </div>
