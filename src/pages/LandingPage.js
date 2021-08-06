@@ -47,10 +47,10 @@ const LandingPage = () => {
         role="button"
         style={buttonstyle}
       >
-        Join now
+        ลงทะเบียน
       </a>
       <a href="/login" className="btn mt-4" role="button" style={buttonstyle}>
-        Login
+        ลงชื่อเข้าใช้
       </a>
       <div className="web-content"></div>
     </div>
