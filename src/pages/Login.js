@@ -84,7 +84,7 @@ const Login = (props) => {
                     type="email"
                     className="form-control form-control-lg border-0"
                     id="email"
-                    placeholder="Email"
+                    placeholder="อีเมล"
                     name="email"
                     value={email}
                     onChange={onChangeEmail}
@@ -96,14 +96,14 @@ const Login = (props) => {
                     type="password"
                     className="form-control form-control-lg border-0"
                     id="floatingPassword"
-                    placeholder="Password"
+                    placeholder="รหัสผ่าน"
                     name="password"
                     value={password}
                     onChange={onChangePassword}
                     validations={[required]}
                   />
                 </div>
-
+                {/* 
                 <div className="form-check mb-3">
                   <Input
                     className="form-check-input"
@@ -117,7 +117,7 @@ const Login = (props) => {
                   >
                     Remember password
                   </label>
-                </div>
+                </div> */}
                 <div className="d-grid">
                   <button
                     className="btn btn-login text-uppercase fw-bold"
@@ -132,13 +132,13 @@ const Login = (props) => {
                     }}
                     disabled={loading}
                   >
-                    Login
+                    เข้าสู่ระบบ
                   </button>
                 </div>
                 <hr className="my-4" />
                 <div className="d-grid mb-2">
                   <button
-                    className="btn btn-google btn-login text-uppercase fw-bold"
+                    className="btn btn-google btn-login fw-bold"
                     type="submit"
                     style={{
                       color: "white !important",
@@ -146,12 +146,12 @@ const Login = (props) => {
                       boxShadow: "0px 4px 4px 0px #00000040",
                     }}
                   >
-                    <i className="fab fa-google me-2"></i> Sign in with Google
+                    <i className="fab fa-google me-2"></i>เข้าสู่ระบบด้วย Google
                   </button>
                 </div>
                 <div className="d-grid">
                   <button
-                    className="btn btn-facebook btn-login text-uppercase fw-bold"
+                    className="btn btn-facebook btn-login fw-bold"
                     type="submit"
                     style={{
                       color: "white !important",
@@ -159,7 +159,7 @@ const Login = (props) => {
                       boxShadow: "0px 4px 4px 0px #00000040",
                     }}
                   >
-                    <i className="fab fa-facebook-f me-2"></i> Sign in with
+                    <i className="fab fa-facebook-f me-2"></i> เข้าสู่ระบบด้วย
                     Facebook
                   </button>
                 </div>
