@@ -17,7 +17,7 @@ import Registration from "./components/RegisterLogin/Registration";
 
 //Admin
 // import AdminNavbar from "./components/Navbar/AdminNavbar";
-import AdminPage from "./components/Admin/AdminPage";
+// import AdminPage from "./components/Admin/AdminPage";
 import DormSetting from "./components/Admin/DormSetting";
 import Room from "./components/Admin/Room/Room";
 // import Invoice from "./pages/Invoice";
@@ -29,7 +29,7 @@ import Home from "./components/General/Home";
 
 //Resident
 import ResidentComplain from "./components/Resident/Complaint";
-import UserPage from "./components/Resident/UserPage";
+// import UserPage from "./components/Resident/UserPage";
 import Billing from "./components/Resident/Invoice";
 import PaymentStatus from "./components/Resident/PaymentStatus";
 // import RoleSelection from "./pages/RoleSelection";
@@ -124,12 +124,12 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/registration" component={Registration} />
           {/* Admin */}
-          <Route path="/admin" component={AdminPage} />
+          {/* <Route path="/admin" component={AdminPage} /> */}
           <Route path="/dormsetting" component={DormSetting} />
           <Route path="/allroom/:dormID" component={Room} />
           <Route path="/addresident/nocode" exact component={NoCodeRoom} />
           {/* Resident */}
-          <Route path="/resident" component={UserPage} />
+          {/* <Route path="/resident" component={UserPage} /> */}
           <Route path="/complain" component={ResidentComplain} />
           {/* <Route path="/room/:dormID" component={Room} />
 //         <Route path="/:dormID/:roomID" component={Info} /> */}
