@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import "../components/RegisterLogin/Register.css";
+import "../RegisterLogin/Register.css";
 
 function Registration() {
   const buttonsubmit = {
