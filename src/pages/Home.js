@@ -8,27 +8,32 @@ function Home() {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    padding: "10px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    maxWidth: "300px",
+    width: "90%",
+    maxHeight: "50px",
+    height: "100%",
     boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     borderRadius: "4px",
-    marginTop: "5px",
     cursor: "pointer",
   };
+
   return (
     <div className="container-fluid" style={{ height: "250px" }}>
-      <div>
-        <h1 style={{ marginTop: "10px", textAlign: "center" }}>
-          Join with Adorminis today!
-        </h1>
-        <div class="container d-grid gap-2 col-4 mx-auto">
-          <a href="../Signup" class="btn" role="button" style={buttonstyle}>
-            Signup
-          </a>
-          <a href="../Login" class="btn" role="button" style={buttonstyle}>
-            Login
-          </a>
-        </div>
-      </div>
+      <h1 className="header mt-4 text-center">Join with Adorminis today!</h1>
+      <a
+        href="/signup/roleselection"
+        className="btn mt-4"
+        role="button"
+        style={buttonstyle}
+      >
+        Join now
+      </a>
+      <a href="../Login" className="btn mt-4" role="button" style={buttonstyle}>
+        Login
+      </a>
+      <div className="web-content"></div>
     </div>
   );
 }
