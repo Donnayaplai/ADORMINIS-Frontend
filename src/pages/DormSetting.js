@@ -1,162 +1,225 @@
 import React, { useState } from "react";
-import Axios from "axios";
 
 function DormSetting() {
-  const [DormNameTHReg, setDormNameTH] = useState("");
-  const [DormNameENGReg, setDormNameENG] = useState("");
-  const [AddressReg, setAddress] = useState("");
-  const [StreetReg, setStreet] = useState("");
-  const [SubdistrictReg, setSubdistrict] = useState("");
-  const [DistrictReg, setDistrict] = useState("");
-  const [PostalCodeReg, setPostalCode] = useState("");
-  const [ProvinceReg, setProvince] = useState("");
+  const [dormnameth, setDormNameTH] = useState("");
+  const [dormnameeng, setDormNameENG] = useState("");
+  const [address, setAddress] = useState("");
+  const [street, setStreet] = useState("");
+  const [district, setDistrict] = useState("");
+  const [subdistrict, setSubdistrict] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [province, setProvince] = useState("");
+  const [waterprice, setWaterPrice] = useState("");
+  const [minwaterunit, setMinWaterUnit] = useState("");
+  const [electricityprice, setElectricityPrice] = useState("");
+  const [buildingname, SetBuildingName] = useState("");
+  const [numoffloor, SetNumofFloor] = useState("");
+  const [roomtype, SetRoomType] = useState("");
+  const [roomprice, SetRoomPrice] = useState("");
 
-  const DormInfoSubmit = () => {
-    Axios.post("http://localhost:3001/dorminfo", {
-      DormNameTH: DormNameTHReg,
-      DormNameENG: DormNameENGReg,
-      Address: AddressReg,
-      Street: StreetReg,
-      Subdistrict: SubdistrictReg,
-      District: DistrictReg,
-      PostalCode: PostalCodeReg,
-      Province: ProvinceReg,
-    }).then((response) => {
-      console.log(response);
-    });
+  const onChangeDormNameTH = (e) => {
+    const dormnameth = e.target.value;
+    setDormNameTH(dormnameth);
   };
+  const onChangeDormNameENG = (e) => {
+    const dormnameeng = e.target.value;
+    setDormNameENG(dormnameeng);
+  };
+  const onChangeAddress = (e) => {
+    const address = e.target.value;
+    setAddress(address);
+  };
+  const onChangeStreet = (e) => {
+    const street = e.target.value;
+    setStreet(street);
+  };
+  const onChangeDistrict = (e) => {
+    const district = e.target.value;
+    setDistrict(district);
+  };
+  const onChangeSubdistrict = (e) => {
+    const subdistrict = e.target.value;
+    setSubdistrict(subdistrict);
+  };
+  const onChangePostcode = (e) => {
+    const postcode = e.target.value;
+    setPostcode(postcode);
+  };
+  const onChangeProvince = (e) => {
+    const province = e.target.value;
+    setProvince(province);
+  };
+  const onChangeWaterPrice = (e) => {
+    const waterprice = e.target.value;
+    setWaterPrice(waterprice);
+  };
+  const onChangeMinWaterUnit = (e) => {
+    const minwaterunit = e.target.value;
+    setMinWaterUnit(minwaterunit);
+  };
+  const onChangeElectricityPrice = (e) => {
+    const electricityprice = e.target.value;
+    setElectricityPrice(electricityprice);
+  };
+  const onChangeBuildingName = (e) => {
+    const buildingname = e.target.value;
+    SetBuildingName(buildingname);
+  };
+  const onChangeNumofFloor = (e) => {
+    const numoffloor = e.target.value;
+    SetNumofFloor(numoffloor);
+  };
+  const onChangeRoomType = (e) => {
+    const roomtype = e.target.value;
+    SetRoomType(roomtype);
+  };
+  const onChangeRoomPrice = (e) => {
+    const roomprice = e.target.value;
+    SetRoomPrice(roomprice);
+  };
+
   return (
     <div>
-      <div className="dormsetting mb-5">
-        <div className="container text-center">
-          <div className="row">
-            <div className="col-xl-9 col-md-8 mx-auto ">
-              <h1 className="text-dark text-center">Dormitory Information</h1>
+      <h1 className="text-center">ตั้งค่าหอพัก</h1>
+      <form>
+        <div className="container">
+          <div
+            className="card mx-auto"
+            style={{ maxWidth: "1200px", width: "90%" }}
+          >
+            <div className="card-header">
+              <p className="h5 fw-bold">ตั้งค่าที่อยู่</p>
             </div>
-          </div>
-        </div>
-        <div className="container pb-3">
-          <div className="container mt-3 mb-2">
-            <h5>Information & Address</h5>
-          </div>
-          <form method="POST" action="/dorminfo">
-            <div
-              className="container col-10 mb-3 pt-2 pb-3"
-              style={{ backgroundColor: "#EAE7E2" }}
-            >
-              <div className="row">
-                <div className="col-xl-8 col-lg-6 col-md-6">
-                  <label for="DormNameTH" className="form-label">
-                    Dormitory Name (TH)
-                  </label>
+            <div className="card-body" style={{ backgroundColor: "#EAE7E2" }}>
+              <div className="form-group row align-items-center">
+                <label
+                  for="dormnameth"
+                  className="col-sm-2 col-md-2 col-form-label"
+                >
+                  ชื่อหอพัก (TH)
+                </label>
+                <div className="col-sm-10 col-md-10">
                   <input
-                    name="DormNameTH"
                     type="text"
                     className="form-control"
-                    onChange={(e) => {
-                      setDormNameTH(e.target.value);
-                    }}
-                    placeholder="ตัวอย่าง: สราญสุข การเด้นท์คอร์ท"
+                    name="dormnameth"
+                    id="dormnameth"
+                    placeholder="ตัวอย่าง: หอพัก อดอมินิส"
+                    value={dormnameth}
+                    onChange={onChangeDormNameTH}
                     required
                   />
                 </div>
-                <div className="col-xl-8 col-lg-6 col-md-6">
-                  <label for="DormNameENG" className="form-label">
-                    Dormitory Name (ENG)
-                  </label>
+              </div>
+
+              <div className="form-group row align-items-center">
+                <label for="dormnameeng" className="col-sm-2 col-form-label">
+                  ชื่อหอพัก (ENG)
+                </label>
+                <div className="col-sm-10">
                   <input
-                    name="DormNameENG"
                     type="text"
                     className="form-control"
-                    onChange={(e) => {
-                      setDormNameENG(e.target.value);
-                    }}
-                    placeholder="ตัวอย่าง: Saransuk Gardencourt"
+                    name="dormnameeng"
+                    id="dormnameeng"
+                    placeholder="ตัวอย่าง: Adorminis Place"
+                    value={dormnameeng}
+                    onChange={onChangeDormNameENG}
                     required
                   />
                 </div>
-                <div className="col-xl-8 col-lg-8 col-md-6 ">
-                  <label for="Address" className="form-label">
-                    Address
-                  </label>
+              </div>
+
+              <div className="form-group row align-items-center">
+                <label for="address" className="col-sm-2 col-form-label">
+                  ที่อยู่
+                </label>
+                <div className="col-sm-10">
                   <input
                     type="text"
-                    name="Address"
                     className="form-control"
-                    onChange={(e) => {
-                      setAddress(e.target.value);
-                    }}
-                    placeholder="บ้านเลขที่/อาคาร/หมู่บ้าน/ หมู่ที่"
-                  ></input>
-                </div>
-                <div className="col-xl-8 col-lg-6 col-md-6">
-                  <label for="Street" className="form-label">
-                    Street
-                  </label>
-                  <input
-                    name="Street"
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => {
-                      setStreet(e.target.value);
-                    }}
+                    name="address"
+                    id="address"
+                    placeholder="บ้านเลขที่/หมู่ที่/ซอย"
+                    value={address}
+                    onChange={onChangeAddress}
                     required
                   />
                 </div>
-                <div className="col-xl-6 col-lg-6 col-md-6">
-                  <label for="Subdistrict" className="form-label">
-                    Subdistrict
+              </div>
+
+              <div className="form-group row align-items-center">
+                <div className="col-md-6">
+                  <label for="street" className="col-sm-2 col-form-label">
+                    ถนน
                   </label>
                   <input
-                    name="Subdistrict"
                     type="text"
                     className="form-control"
-                    onChange={(e) => {
-                      setSubdistrict(e.target.value);
-                    }}
+                    name="street"
+                    id="street"
+                    value={street}
+                    onChange={onChangeStreet}
                     required
                   />
                 </div>
-                <div className="col-xl-6 col-lg-4 col-md-6">
-                  <label for="District" className="form-label">
-                    District
+                <div className="col-md-6">
+                  <label for="district" className="col-sm-3 col-form-label">
+                    แขวง
                   </label>
                   <input
-                    name="District"
                     type="text"
                     className="form-control"
-                    onChange={(e) => {
-                      setDistrict(e.target.value);
-                    }}
+                    name="district"
+                    id="district"
+                    value={district}
+                    onChange={onChangeDistrict}
                     required
                   />
                 </div>
-                <div className="col">
-                  <label for="Postcode" className="form-label">
-                    Postal Code
+              </div>
+              <div className="form-group row align-items-center">
+                <div className="col-md-6">
+                  <label for="subdistrict" className="col-sm-2 col-form-label">
+                    เขต
                   </label>
                   <input
-                    name="Postcode"
                     type="text"
                     className="form-control"
-                    onChange={(e) => {
-                      setPostalCode(e.target.value);
-                    }}
+                    name="subdistrict"
+                    id="subdistrict"
+                    value={subdistrict}
+                    onChange={onChangeSubdistrict}
                     required
                   />
                 </div>
-                <div className="col">
-                  <label for="Province" className="form-label">
-                    Province
+                <div className="col-md-6">
+                  <label for="postcode" className="col-sm-3 col-form-label">
+                    รหัสไปรษณีย์
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="postcode"
+                    id="postcode"
+                    value={postcode}
+                    onChange={onChangePostcode}
+                    required
+                  />
+                </div>
+                <div className="col-md-4">
+                  <label for="province" className="col-sm-3 col-form-label">
+                    จังหวัด
                   </label>
                   <select
-                    id="Province"
                     className="form-select"
-                    onChange={(e) => {
-                      setProvince(e.target.value);
-                    }}
+                    name="province"
+                    id="province"
+                    value={province}
+                    onChange={onChangeProvince}
+                    required
                   >
-                    <option selected>Choose...</option>
+                    <option selected>เลือก...</option>
                     <option>กรุงเทพมหานคร</option>
                     <option>กระบี่</option>
                     <option>กาญจนบุรี</option>
@@ -236,173 +299,211 @@ function DormSetting() {
                 </div>
               </div>
             </div>
-            {/* <div className="container mt-3 mb-2">
-              <h5>Building Setting</h5>
+          </div>
+          <div
+            className="card mx-auto mt-5"
+            style={{ maxWidth: "1200px", width: "90%" }}
+          >
+            <div className="card-header">
+              <p className="h5 fw-bold">ตั้งค่าตึก</p>
             </div>
-            <div
-              className="container col-10 mb-3 pt-2 pb-3"
-              style={{ backgroundColor: "#EAE7E2" }}
-            >
+            <div className="card-body" style={{ backgroundColor: "#EAE7E2" }}>
               <div className="row">
-                <div className="col-xl-6 col-lg-4 col-md-4">
-                  <label for="BuidingName" className="form-label">
-                    Building Name
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="ตัวอย่าง: สราญสุข"
-                    required
-                  />
-                </div>
-                <div className="col-xl-6 col-lg-4 col-md-4">
-                  <label for="NumofBuilding" className="form-label">
-                    Amount of Building
-                  </label>
-                  <input type="text" className="form-control" required />
-                </div>
-              </div>
-            </div>
-
-            <div className="container mt-3 mb-2">
-              <h5>Utitilities Setting</h5>
-            </div>
-
-            <div
-              className="container col-10 pt-2 pb-3 mb-2"
-              style={{ backgroundColor: "#EAE7E2" }}
-            >
-              <div className="row justify-content-start">
-                <div className="col-4">
-                  <label for="inputPriceperUnit" className="form-label">
-                    Price/Unit
-                  </label>
-                  <input type="text" className="form-control" required />
-                </div>
-                <div className="col-4">
-                  <label for="inputMinimumUnit" className="form-label">
-                    Minimum Unit
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="inputMinimumUnit"
-                    required
-                  />
-                </div>
-                <div className="col-4">
-                  <label for="inputMinimumPrice" className="form-label">
-                    Minimum Price
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="inputMinimumPrice"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              className="container col-10 pt-2 pb-3 mb-2"
-              style={{ backgroundColor: "#EAE7E2" }}
-            >
-              <div className="col-4">
-                <label for="inputMinimumPrice" className="form-label">
-                  Minimum Price
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputMinimumPrice"
-                  required
-                />
-              </div>
-            </div> */}
-
-            <button
-              type="button"
-              class="btn mt-3 float-end"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-              style={{
-                backgroundColor: "#C7E5F0",
-                borderRadius: "4px",
-                boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25);",
-                width: "200px",
-                height: "50px",
-                marginRight: "90px",
-              }}
-            >
-              Save
-            </button>
-
-            <div
-              class="modal fade"
-              id="staticBackdrop"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
-              tabindex="-1"
-              aria-labelledby="staticBackdropLabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div
-                    class="modal-header"
-                    style={{
-                      backgroundColor: "#C7E5F0",
-                    }}
-                  >
-                    <h5 class="modal-title" id="staticBackdropLabel">
-                      Confirmation
-                    </h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    Are you sure that your dormitory information is correct ?
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                      style={{
-                        borderRadius: "4px",
-                        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25);",
-                        width: "100px",
-                        height: "50px",
-                      }}
+                <div className="col">
+                  <div className="form-group row align-items-center">
+                    <label
+                      for="buildingname"
+                      className="col-sm-3 col-md-2 col-form-label"
                     >
-                      Cancel
-                    </button>
-                    <button
-                      type="button"
-                      onClick={DormInfoSubmit}
-                      class="btn"
-                      style={{
-                        borderRadius: "4px",
-                        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25);",
-                        width: "100px",
-                        height: "50px",
-                        backgroundColor: "#C7E5F0",
-                      }}
+                      ชื่อตึก
+                    </label>
+                    <div className="col-sm-9 col-md-10">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="buildingname"
+                        id="buildingname"
+                        value={buildingname}
+                        onChange={onChangeBuildingName}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="form-group row align-items-center">
+                    <label
+                      for="numoffloor"
+                      className="col-sm-3 col-md-3 col-form-label"
                     >
-                      Ok
-                    </button>
+                      จำนวนชั้น
+                    </label>
+                    <div className="col-sm-9 col-md-6">
+                      <input
+                        type="number"
+                        className="form-control"
+                        name="numoffloor"
+                        id="numoffloor"
+                        value={numoffloor}
+                        min="1"
+                        onChange={onChangeNumofFloor}
+                        required
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </form>
+          </div>
+          <div
+            className="card mx-auto mt-5"
+            style={{ maxWidth: "1200px", width: "90%" }}
+          >
+            <div className="card-header">
+              <p className="h5 fw-bold">ตั้งค่าห้องพัก</p>
+            </div>
+            <div className="card-body" style={{ backgroundColor: "#EAE7E2" }}>
+              <div className="row">
+                <div className="col">
+                  <div className="form-group row align-items-center">
+                    <label
+                      for="roomtype"
+                      className="col-sm-3 col-md-3 col-form-label"
+                    >
+                      ประเภทห้อง
+                    </label>
+                    <div className="col-sm-9 col-md-9">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="roomtype"
+                        id="buildingname"
+                        value={roomtype}
+                        onChange={onChangeRoomType}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="form-group row align-items-center">
+                    <label
+                      for="roomprice"
+                      className="col-sm-3 col-md-2 col-form-label"
+                    >
+                      ราคา
+                    </label>
+                    <div className="col-sm-9 col-md-10">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="roomprice"
+                        id="roomprice"
+                        value={roomprice}
+                        min="1"
+                        onChange={onChangeRoomPrice}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="card mx-auto mt-5 mb-3"
+            style={{ maxWidth: "1200px", width: "90%" }}
+          >
+            <div className="card-header">
+              <p className="h5 fw-bold">อื่น ๆ</p>
+            </div>
+            <div className="card-body" style={{ backgroundColor: "#EAE7E2" }}>
+              <div className="row">
+                <div className="col">
+                  <h6 className="fw-bold">ค่าน้ำ</h6>
+                  <div className="form-group row align-items-center">
+                    <label
+                      for="WaterPrice"
+                      className="col-sm-3 col-md-3 col-form-label"
+                    >
+                      ราคา/หน่วย
+                    </label>
+                    <div className="col-sm-9 col-md-9">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="WaterPrice"
+                        id="WaterPrice"
+                        value={waterprice}
+                        onChange={onChangeWaterPrice}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row align-items-center">
+                    <label
+                      for="MinWaterUnit"
+                      className="col-sm-3 col-md-3 col-form-label"
+                    >
+                      หน่วยขั้นต่ำ
+                    </label>
+                    <div className="col-sm-9 col-md-9">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="MinWaterUnit"
+                        id="MinWaterUnit"
+                        value={minwaterunit}
+                        onChange={onChangeMinWaterUnit}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row align-items-center">
+                    <label
+                      for="input_id_1"
+                      className="col-sm-3 col-md-3 col-form-label"
+                    >
+                      ราคาขั้นต่ำ
+                    </label>
+                    <div className="col-sm-9 col-md-9">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="input_id_1"
+                        id="input_id_1"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col">
+                  <h6 className="fw-bold">ค่าไฟ</h6>
+                  <div className="form-group row align-items-center">
+                    <label
+                      for="ElectricityPrice"
+                      className="col-sm-3 col-md-3 col-form-label"
+                    >
+                      ราคา/หน่วย
+                    </label>
+                    <div className="col-sm-9 col-md-9">
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="ElectricityPrice"
+                        id="ElectricityPrice"
+                        value={electricityprice}
+                        onChange={onChangeElectricityPrice}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      );
+      </form>
     </div>
   );
 }
