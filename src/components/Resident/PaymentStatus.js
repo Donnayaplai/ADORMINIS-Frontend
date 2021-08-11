@@ -1,6 +1,6 @@
 import React from "react";
 
-function Invoice() {
+function PaymentStatus() {
   let rowstyle = {
     backgroundColor: "#EAE7E2",
     border: "none",
@@ -27,7 +27,7 @@ function Invoice() {
   return (
     <div className="container">
       <h1 className="text-center">สถานะการชำระเงิน</h1>
-      {/* <div className="" style={{ backgroundColor: "#C7E5F0" }}> */}
+
       <div className="table-responsive mt-3">
         <table className="table table-hover align-middle table-borderless">
           <thead style={thead}>
@@ -54,22 +54,7 @@ function Invoice() {
       <button type="button" className="btn mt-3" style={button}>
         Make a payment
       </button>
-      {/* </div> */}
-      {/* <h1 className="text-dark text-center">Invoice</h1>
-      <div className="col-xl-10 col-lg-8 col-md-6">
-            <input
-              type="text"
-              className="form-control"
-              id="search"
-              placeholder="Search here"/>
-          </div>
-          <div className="row">
-          <div className="container mt-3">
-        <h5>Year : </h5>
-        <h5>Month : </h5>
-      </div>
-</div> */}
     </div>
   );
 }
-export default Invoice;
+export default PaymentStatus;
