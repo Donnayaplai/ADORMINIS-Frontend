@@ -9,23 +9,23 @@ import "./index.css";
 import Logo from "../src/images/logo.png";
 
 // Public
-import LandingPage from "./pages/LandingPage";
-import Login from "./pages/Login";
+import LandingPage from "./components/General/LandingPage";
+import Login from "./components/RegisterLogin/Login";
 // import Register from "./components/Register/Register";
-import Registration from "./pages/Registration";
+import Registration from "./components/RegisterLogin/Registration";
 // import PublicNavbar from "./components/Navbar/PublicNavbar";
 
 //Admin
 // import AdminNavbar from "./components/Navbar/AdminNavbar";
 import AdminPage from "./components/Admin/AdminPage";
-import DormSetting from "./pages/DormSetting";
+import DormSetting from "./components/Admin/DormSetting";
 import Room from "./components/Admin/Room/Room";
 // import Invoice from "./pages/Invoice";
-import Utility from "./components/Admin/Utilities/Utility";
-import UtilitySummary from "./components/Admin/Utilities/UtilitySummary";
+import Utility from "./components/Admin/Utility/Utility";
+import UtilitySummary from "./components/Admin/Utility/UtilitySummary";
 // import Payment from "./pages/Payment";
 import NoCodeRoom from "./components/Admin/Room/NoCodeRoom";
-import Home from "./pages/Home";
+import Home from "./components/General/Home";
 
 //Resident
 import ResidentComplain from "./components/Resident/Complaint";
@@ -33,7 +33,7 @@ import UserPage from "./components/Resident/UserPage";
 import Billing from "./components/Resident/Invoice";
 import PaymentStatus from "./components/Resident/PaymentStatus";
 // import RoleSelection from "./pages/RoleSelection";
-import PersonalInfo from "./pages/PersonalInfo";
+import PersonalInfo from "./components/General/PersonalInfo";
 
 function App() {
   // const [authState, setAuthState] = useState({
