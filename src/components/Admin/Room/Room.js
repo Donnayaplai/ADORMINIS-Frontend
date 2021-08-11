@@ -31,7 +31,7 @@ function Room(props) {
     marginRight: "auto",
   };
   useEffect(() => {
-    Axios.get("http://www.localhost:3001/")
+    Axios.get("http://localhost:3001/room/100000003")
       .then((res) => {
         console.log(res);
         SetData(res.data);
@@ -91,7 +91,7 @@ function Room(props) {
                           <th scope="row" key={i.id}>
                             {i.ROOMNO}
                           </th>
-                          <td key={i.id}>{i.ALLROOMSTATUSes[0].STATUS}</td>
+                          <td key={i.id}>{i.STATUS}</td>
                           <td key={i.id}>
                             <button
                               type="button"
@@ -109,7 +109,7 @@ function Room(props) {
                               aria-labelledby="exampleModalInfo"
                               aria-hidden="true"
                             >
-                              <div className="modal-dialog">
+                              <div className="modal-dialog modal-lg">
                                 <div className="modal-content">
                                   <div
                                     className="modal-header"
@@ -128,21 +128,35 @@ function Room(props) {
                                       aria-label="Close"
                                     ></button>
                                   </div>
-                                  <div className="modal-body">
+                                  <div className="modal-body position-relative">
+                                    <h6 className="fs-5 fw-bold position-absolute top-2 start-2">
+                                      ห้อง 101
+                                    </h6>
+                                    <br />
                                     <div
-                                      className="container col-10 mb-3 pt-2 pb-3"
-                                      style={{ backgroundColor: "#EAE7E2" }}
+                                      className="container col-12 mb-3 mt-2 pt-2 pb-3 "
+                                      style={{
+                                        backgroundColor: "#EAE7E2",
+                                      }}
                                     >
                                       <div className="row">
-                                        <div className=""></div>
-                                        <h6>Room 101</h6>
-                                        <p>Name</p>
-                                        <p>Lastname</p>
-                                        <p>Telephone no.</p>
-                                        <p>Gender</p>
-                                        <p>วันเริ่มสัญญา</p>
-                                        <p>วันสิ้นสุดสัญญา</p>
-                                        <p>วันที่เข้าพัก</p>
+                                        <div class="col-3"></div>
+                                        <div class="col-9">
+                                          <div class="row justify-content-start">
+                                            <div class="col-5">
+                                              <p>ชื่อ</p>
+                                              <p>นามสกุล</p>
+                                              <p>โทร</p>
+                                              <p>เพศ</p>
+                                              <p>วันเริ่มสัญญา</p>
+                                              <p>วันสิ้นสุดสัญญา</p>
+                                              <p>วันที่เข้าพัก</p>
+                                            </div>
+                                            <div class="col-7">
+                                              One of two columns
+                                            </div>
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
