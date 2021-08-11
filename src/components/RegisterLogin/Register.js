@@ -6,9 +6,9 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 
-import { register } from "../actions/auth";
+import { register } from "../../actions/auth";
 
-import "../styles/Register.css";
+import "./Register.css";
 
 const required = (value) => {
   if (!value) {
@@ -58,10 +58,19 @@ const vlname = (value) => {
   }
 };
 const vtelno = (value) => {
-  if (!value.telno.trim()) {
+  if (value.length <= 0) {
     return (
       <div className="alert alert-danger" role="alert">
         Telephone number is required!
+      </div>
+    );
+  }
+};
+const vIDCardNo = (value) => {
+  if (value.length !== 13) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        ID Card Number need to have 13 digits.
       </div>
     );
   }
@@ -74,8 +83,11 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
-  // const [dob, setDob] = useState("");
+  const [dob, setDob] = useState("");
+  const [IDCardNo, setIDCardNo] = useState("");
   const [telno, setTelno] = useState("");
+  const [gender, setGender] = useState("");
+  const [role, setRole] = useState("");
   const [successful, setSuccessful] = useState(false);
 
   const { message } = useSelector((state) => state.message);
@@ -104,13 +116,25 @@ const Register = () => {
     const lname = e.target.value;
     setLname(lname);
   };
-  // const onChangeDob = (e) => {
-  //   const dob = e.target.value;
-  //   setDob(dob);
-  // };
+  const onChangeDob = (e) => {
+    const dob = e.target.value;
+    setDob(dob);
+  };
+  const onChangeIDCardNo = (e) => {
+    const IDCardNo = e.target.value;
+    setIDCardNo(IDCardNo);
+  };
   const onChangeTelno = (e) => {
     const telno = e.target.value;
     setTelno(telno);
+  };
+  // const onChangeGender = (e) => {
+  //   const gender = e.target.value;
+  //   setGender(gender);
+  // };
+  const onChangeRole = (e) => {
+    const role = e.target.value;
+    setRole(role);
   };
   const handleRegister = (e) => {
     e.preventDefault();
@@ -151,12 +175,12 @@ const Register = () => {
                           <Input
                             type="text"
                             className="form-control border-0"
-                            id="floatingInputEmail"
+                            id="email"
                             name="email"
                             value={email}
                             onChange={onChangeEmail}
                             validations={[required, validEmail]}
-                            placeholder="Email"
+                            placeholder="อีเมล"
                             style={inputstyle}
                           />
                         </div>
@@ -164,12 +188,26 @@ const Register = () => {
                           <Input
                             type="text"
                             className="form-control "
-                            id="floatingInputFirstname"
+                            id="fname"
                             name="fname"
-                            placeholder="Firstname"
+                            placeholder="ชื่อจริง"
                             value={fname}
                             onChange={onChangeFname}
                             validations={[required, vfname]}
+                            style={inputstyle}
+                            autofocus
+                          />
+                        </div>
+                        <div className="form-floating mb-3">
+                          <Input
+                            type="text"
+                            className="form-control "
+                            id="IDCardNo"
+                            name="IDCardNo"
+                            placeholder="เลขบัตรประชาชน"
+                            value={IDCardNo}
+                            onChange={onChangeIDCardNo}
+                            validations={[required, vIDCardNo]}
                             style={inputstyle}
                             autofocus
                           />
@@ -178,8 +216,8 @@ const Register = () => {
                           <Input
                             type="text"
                             className="form-control"
-                            id="floatingInputTelno"
-                            placeholder="Telephone No."
+                            id="telno"
+                            placeholder="เบอร์โทรศัพท์"
                             value={telno}
                             onChange={onChangeTelno}
                             validations={[required, vtelno]}
@@ -189,21 +227,21 @@ const Register = () => {
                         </div>
 
                         <div className="d-md-flex justify-content-start align-items-center mb-2 ">
-                          <h6 className="mb-0 me-3">Gender: </h6>
+                          <h6 className="mb-0 me-3">เพศ: </h6>
 
                           <div className="form-check form-check-inline mb-0 me-4">
                             <Input
                               className="form-check-input"
                               type="radio"
-                              name="inlineRadioOptions"
+                              name="gender"
                               id="femaleGender"
-                              value="option1"
+                              value={gender}
                             />
                             <label
                               className="form-check-label"
                               for="femaleGender"
                             >
-                              Female
+                              หญิง
                             </label>
                           </div>
 
@@ -211,15 +249,15 @@ const Register = () => {
                             <Input
                               className="form-check-input"
                               type="radio"
-                              name="inlineRadioOptions"
+                              name="gender"
                               id="maleGender"
-                              value="option2"
+                              value={gender}
                             />
                             <label
                               className="form-check-label"
                               for="maleGender"
                             >
-                              Male
+                              ชาย
                             </label>
                           </div>
                         </div>
@@ -229,13 +267,13 @@ const Register = () => {
                           <Input
                             type="text"
                             className="form-control border-0"
-                            id="floatingPassword"
+                            id="password"
                             name="password"
                             value={password}
                             onChange={onChangePassword}
                             validations={[required, vpassword]}
                             style={inputstyle}
-                            placeholder="Password"
+                            placeholder="รหัสผ่าน"
                           />
                         </div>
 
@@ -245,7 +283,7 @@ const Register = () => {
                             className="form-control"
                             id="floatingInputLastname"
                             name="lname"
-                            placeholder="Lastname"
+                            placeholder="นามสกุล"
                             value={lname}
                             onChange={onChangeLname}
                             validations={[required, vlname]}
@@ -257,19 +295,38 @@ const Register = () => {
                           <select
                             className=" form-select"
                             aria-label="Default select example"
+                            onChange={onChangeRole}
+                            style={inputstyle}
+                            value={role}
+                            required
+                            autofocus
                           >
-                            <option selected>Select your Role</option>
-                            <option value="1">Resident</option>
-                            <option value="2">Manager</option>
-                            <option value="3">Owner</option>
+                            <option selected>เลือกตำแหน่ง...</option>
+                            <option value="user">ผู้เช่า</option>
+                            <option value="admin">พนักงาน</option>
                           </select>
+                        </div>
+
+                        <div className="form-floating mb-3">
+                          <Input
+                            type="date"
+                            className="form-control"
+                            id="dob"
+                            name="dob"
+                            placeholder="ว/ด/ป เกิด"
+                            value={dob}
+                            onChange={onChangeDob}
+                            style={inputstyle}
+                            required
+                            autofocus
+                          />
                         </div>
                       </div>
                     </div>
 
                     <div className="d-grid mb-2">
                       <button
-                        className="btn btn-lg btn-login fw-bold text-uppercase"
+                        className="btn btn-lg btn-login fw-bold"
                         type="submit"
                         style={{
                           backgroundColor: "#C7E5F0",
@@ -278,32 +335,32 @@ const Register = () => {
                           padding: "0.75rem 1rem",
                         }}
                       >
-                        Register
+                        ลงทะเบียน
                       </button>
                     </div>
                     <a className="d-block text-center mt-2 small" href="/login">
-                      Have an account? Sign In
+                      มีบัญชีผู้ใช้อยู่แล้ว ? เข้าสู่ระบบ
                     </a>
 
                     <hr className="my-4" />
 
                     <div className="d-grid mb-2">
                       <button
-                        className="btn btn-lg btn-google btn-login fw-bold text-uppercase"
+                        className="btn btn-lg btn-google btn-login fw-bold"
                         type="submit"
                       >
-                        <i className="fab fa-google me-2"></i> Sign up with
+                        <i className="fab fa-google me-2"></i> ดำเนินการต่อด้วย
                         Google
                       </button>
                     </div>
 
                     <div className="d-grid">
                       <button
-                        className="btn btn-lg btn-facebook btn-login fw-bold text-uppercase"
+                        className="btn btn-lg btn-facebook btn-login fw-bold"
                         type="submit"
                       >
-                        <i className="fab fa-facebook-f me-2"></i> Sign up with
-                        Facebook
+                        <i className="fab fa-facebook-f me-2"></i>
+                        ดำเนินการต่อด้วย Facebook
                       </button>
                     </div>
                   </div>

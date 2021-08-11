@@ -1,11 +1,11 @@
 import React from "react";
 import Logo from "./images/logo.png";
-import "./Navbar2.css";
+import "./AdminNavbar.css";
 import * as BiIcons from "react-icons/bi";
 import * as RiIcons from "react-icons/ri";
 import * as AiIcons from "react-icons/ai";
 import * as MiIcons from "react-icons/md";
-const Navbar2 = () => {
+const AdminNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
@@ -85,7 +85,7 @@ const Navbar2 = () => {
   );
 };
 
-export default Navbar2;
+export default AdminNavbar;
 
 // <nav className="navbar navbar-expand-lg bg-dark ">
 //   <div className="container-fluid">
