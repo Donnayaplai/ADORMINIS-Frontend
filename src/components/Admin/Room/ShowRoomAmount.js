@@ -36,7 +36,7 @@ function ShowRoomAmount() {
           </p>
         </div>
         <div className="pt-3" style={ShowAmountCard}>
-          <h3 class="fw-bold">จำนวนห้องที่ไม่ว่างทั้งหมด</h3>
+          <h3 className="fw-bold">จำนวนห้องที่ไม่ว่างทั้งหมด</h3>
           <p style={{ fontSize: "40px", fontWeight: "bolder" }}>
             100
             <span
