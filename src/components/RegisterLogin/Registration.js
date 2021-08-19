@@ -27,26 +27,27 @@ function Registration() {
   const initialValues = {
     fname: "",
     lname: "",
-    // telno: "",
-    // gender: "",
-    // idcardno: "",
+    telno: "",
+    gender: "",
+    idcardno: "",
     email: "",
     password: "",
-    // role: "",
+    role: "",
   };
   const validationSchema = Yup.object().shape({
     fname: Yup.string().required("Firstname is required!"),
     lname: Yup.string().required("Lastname is required!"),
-    // telno: Yup.number()
-    //   .required("Telephone no. is required")
-    //   .positive()
-    //   .max(13),
-    // gender: Yup.string().required("Gender is required!"),
-    // idcardno: Yup.number().required("Required!").positive().min(13).max(13),
+    telno: Yup.number()
+      .required("Telephone no. is required")
+      .positive()
+      .max(13),
+    gender: Yup.string().required("Gender is required!"),
+    idcardno: Yup.number().required("Required!").positive().min(13).max(13),
     email: Yup.string().email("Invalid email").required("Email is required!"),
     password: Yup.string()
       .min(6, "Password must be at least 6 charaters")
       .required("Password is required"),
+    // confirmPassword: Yup.string().oneOf([Yup.ref("password"), null]),
     // role: Yup.string().required("Role is required."),
   });
   const onSubmit = (data) => {
